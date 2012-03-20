@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="touchA">#9b7b9bff</color>
+  <color name="touchB">#ffcc00ff</color>
+  <color name="touchC">#ff6600ff</color>
+  <color name="touchD">#660066ff</color>
+  <color name="touchE">#77ffff00</color>
+
+  <color name="line">#ffffff00</color>
+</resources>
