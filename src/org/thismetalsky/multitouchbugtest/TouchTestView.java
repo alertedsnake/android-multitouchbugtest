@@ -124,12 +124,15 @@ public class TouchTestView extends SurfaceView implements SurfaceHolder.Callback
         switch (action & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
                 int pointerId = event.getPointerId(0);
+                //Log.d(TAG, "pointer down 0 / " + pointerId);
                 touch[0].active = true;
                 touch[0].x = event.getX(0);
                 touch[0].y = event.getY(0);
                 break;
 
             case MotionEvent.ACTION_UP:
+                pointerId = event.getPointerId(0);
+                //Log.d(TAG, "pointer up 0 / " + pointerId);
                 for (Touch t : touch) {
                     t.active = false;
                 }
@@ -138,14 +141,16 @@ public class TouchTestView extends SurfaceView implements SurfaceHolder.Callback
             case MotionEvent.ACTION_POINTER_UP:
                 int pointerIndex = (event.getAction() & MotionEvent.ACTION_POINTER_INDEX_MASK) >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
                 pointerId = event.getPointerId(pointerIndex);
+                //Log.d(TAG, "pointer up " + pointerIndex + " / " + pointerId);
                 if (pointerIndex < MAX_POINTER_COUNT)
-                    touch[pointerIndex].active = false;
+                    touch[pointerId].active = false;
                 break;
 
             // second pointer down
             case MotionEvent.ACTION_POINTER_DOWN:
                 pointerIndex = (event.getAction() & MotionEvent.ACTION_POINTER_INDEX_MASK) >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
                 pointerId = event.getPointerId(pointerIndex);
+                //Log.d(TAG, "pointer down " + pointerIndex + " / " + pointerId);
                 if (pointerIndex < MAX_POINTER_COUNT) {
                     touch[pointerIndex].active = true;
                     touch[pointerIndex].x = event.getX(pointerIndex);
